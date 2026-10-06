@@ -1,0 +1,66 @@
+/*
+ * Excel Export Widget - widget.css  (v1.1.0)
+ * Styles injected into the Shadow DOM via the <link> tag in the component template.
+ */
+
+:host {
+  display:         flex;
+  align-items:     center;
+  justify-content: center;
+  width:           100%;
+  height:          100%;
+  box-sizing:      border-box;
+  font-family:     "72", "SAP 72", Arial, sans-serif;
+  position:        relative;
+}
+
+#wrapper {
+  display:         flex;
+  flex-direction:  column;
+  align-items:     center;
+  justify-content: center;
+  gap:             6px;
+  width:           100%;
+}
+
+#exportBtn {
+  display:         inline-flex;
+  align-items:     center;
+  justify-content: center;
+  gap:             6px;
+  padding:         8px 20px;
+  min-width:       140px;
+  border:          none;
+  border-radius:   4px;
+  font-size:       14px;
+  font-weight:     600;
+  cursor:          pointer;
+  letter-spacing:  0.02em;
+  white-space:     nowrap;
+  outline:         none;
+  transition:      opacity 0.18s ease, box-shadow 0.18s ease;
+  background-color: #0070F2;
+  color:            #FFFFFF;
+}
+
+#exportBtn:hover:not(:disabled) {
+  opacity:    0.88;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.22);
+}
+
+#exportBtn:active:not(:disabled) {
+  opacity:    0.72;
+  box-shadow: none;
+}
+
+#exportBtn:disabled {
+  opacity: 0.48;
+  cursor:  not-allowed;
+}
+
+#statusMsg {
+  font-size:  11px;
+  color:      #666;
+  min-height: 14px;
+  text-align: center;
+}
