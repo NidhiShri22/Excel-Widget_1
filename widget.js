@@ -1,5 +1,5 @@
 /**
- * SAC Custom Widget - Excel Export Widget  (v1.2.0)
+ * SAC Custom Widget - Excel Export Widget  (v1.1.0)
  *
  * Features:
  *  - Exports the bound SAC table to .xlsx via xlsx-js-style (SheetJS fork)
@@ -57,7 +57,7 @@
 
   var tmpl = document.createElement("template");
   tmpl.innerHTML =
-    '<link rel="stylesheet" href="https://raw.githubusercontent.com/NidhiShri22/Excel-Widget/refs/heads/main/widget.css" />' +
+    '<link rel="stylesheet" href="widget.css" />' +
     '<div id="wrapper">' +
       '<button id="exportBtn" part="export-button" aria-label="Export to Excel">' +
         '<span id="btnLabel">Export to Excel</span>' +
@@ -144,6 +144,23 @@
           this._autoUser = (u.getId && u.getId()) || u.id || u.name || u.email || "";
         }
       } catch (e) { /* SAC context not available – silent fallback */ }
+    };
+
+    /**
+     * Connect the widget directly to an existing SAC table's data source.
+     * This eliminates the need to configure a separate data binding on the widget.
+     *
+     * Call once from the story's onInitialization script:
+     *   ExcelExportWidget_1.setTableDataSource(Table_1.getDataSource());
+     *
+     * @param {object} dataSource - The SAC DataSource object from Table_1.getDataSource()
+     */
+    ExcelExportWidget.prototype.setTableDataSource = function (dataSource) {
+      if (dataSource) {
+        this.tableDataBinding = dataSource;
+        this._setStatus("");
+        console.log("[ExcelExportWidget] Table data source connected.");
+      }
     };
 
     /* Public API */
